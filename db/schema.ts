@@ -1,0 +1,2 @@
+import { sqliteTable, text, integer, uniqueIndex } from "drizzle-orm/sqlite-core";
+export const reviews = sqliteTable("reviews", { id: text("id").primaryKey(), menu: text("menu").notNull(), userId: text("user_id").notNull(), nickname: text("nickname").notNull(), rating: integer("rating").notNull(), comment: text("comment").notNull(), createdAt: integer("created_at").notNull() }, (t) => [uniqueIndex("review_user_menu").on(t.menu,t.userId)]);
